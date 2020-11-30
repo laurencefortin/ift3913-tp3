@@ -1,65 +1,93 @@
 package currencyConverter;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 
-import org.junit.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.Assert;
 
 public class MainWindowConvertTest {
 	
 	private String devise1;
 	private String devise2;
 	private ArrayList<Currency> devises;
-	private Double montant;
+	private double montant;
 	private MainWindow fenetrePrincipale;
 	
-	@Before
+	@BeforeEach
 	public void setUp() {
 		devise1 = "USD";
-		devise2 = "CAD";
-		devises = Currency.init();
+		devise2 = "USD";
+		devises = currencyConverter.Currency.init();
 		montant = 100.0;
 		fenetrePrincipale = new MainWindow();
 	}
 	
 	@Test
-	public void testDevise1_bonContenu()
+	public void test_bonContenu()
 	{
 		// Arrange.
 		
-	    
 	    // Act.
-		
+		double resultat = MainWindow.convert(devise1, devise2, devises, montant);
+
 		
 		// Assert.	
-	
+		assertEquals(montant, resultat);
+
 		
 	}
 	
-	@Test //On ne trouvera pas le bon contenu de la methode s'il y a plusieurs accolades sur la 1ere ligne
+	@Test 
 	public void testDevise1_mauvaisContenu()
 	{
 		// Arrange.
 		
-	    
-	    // Act.
-		final Double resultat = fenetrePrincipale.convert(devise1, devise2, devises, montant);
 		
+		devise1 = "JPY";
+
+	    // Act.
+		final double resultat = MainWindow.convert(devise1, devise2, devises, montant);
 		// Assert.
-	   assertNotEquals(resultat, montant);
+		
+		assertEquals(0.0, resultat);
 		
 	}
 	
-	@Test
-	public void testTrouverSignature_bonneSignature() throws IOException
+	
+	
+	@Test 
+	public void testDevise2_mauvaisContenu()
 	{
 		// Arrange.
 		
-		// Act.
-					
+		
+		devise2 = "JPY";
+
+	    // Act.
+		final double resultat = MainWindow.convert(devise1, devise2, devises, montant);
 		// Assert.
+		
+		assertEquals(0.0, resultat);		
+	}
+	
+	
+	
+	@Test 
+	public void testMontant_mauvaisContenu()
+	{
+		// Arrange.
+		
+		
+		montant = -1.0;
+
+	    // Act.
+		final double resultat = MainWindow.convert(devise1, devise2, devises, montant);
+		// Assert.
+		
+		assertEquals(0.0, resultat);
 		
 	}
 	
