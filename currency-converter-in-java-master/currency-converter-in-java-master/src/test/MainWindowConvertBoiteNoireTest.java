@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import currencyConverter.Currency;
 import currencyConverter.MainWindow;
 
-public class MainWindowConvertTest {
+public class MainWindowConvertBoiteNoireTest {
 
 	private String devise1;
 	private String devise2;

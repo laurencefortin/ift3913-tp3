@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import currencyConverter.Currency;
 import currencyConverter.MainWindow;
 
-class CurrencyConvertTest {
+class CurrencyConvertBoiteNoireTest {
 
 	private double montant1;
 	private double montant2;
