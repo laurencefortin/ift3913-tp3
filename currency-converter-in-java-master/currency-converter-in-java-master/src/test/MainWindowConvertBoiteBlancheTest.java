@@ -57,6 +57,17 @@ class MainWindowConvertBoiteBlancheTest {
 		assertEquals(0.0, MainWindow.convert(devise1, devise2, devises, montant));
 	}
 	
+	@Test
+	public void test_couvertureiChemins_devise1devise2Mauvaise() {
+		// Arrange.
+		devise1 = "Not A Devise";
+		devise2 = "Not A Devise";
+		// Act.
+
+		// Assert.
+		assertEquals(0.0, MainWindow.convert(devise1, devise2, devises, montant));
+	}
+	
 	
 
 }
